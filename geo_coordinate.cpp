@@ -55,4 +55,8 @@ Angle GeoCoordinate::BearingTo(const GeoCoordinate &other) const {
 
   return Angle::FromRadian(fmod(direction + 2 * M_PI, 2 * M_PI));
 }
+<<<<<<< HEAD
 } // namespace ljanka
+=======
+} // namespace ljankai
+>>>>>>> origin/master
