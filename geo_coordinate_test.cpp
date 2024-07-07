@@ -36,11 +36,7 @@ TEST(GeoCoordinateTest, DirectionCalculatorFromSouthNorth90) {
   EXPECT_EQ(start.BearingTo(end), Angle::FromDegrees(0));
 }
 
-<<<<<<< HEAD
-// 
-=======
 // DistanceCalculator
->>>>>>> origin/master
 
 TEST(GeoCoordinateTest, DistanceCalculator) {
   GeoCoordinate start = GeoCoordinate::FromDegrees(-90, 0);
