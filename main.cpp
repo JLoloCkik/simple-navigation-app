@@ -1,6 +1,7 @@
-#include "Country.cpp"
+#include "eu_countries.cpp"
 #include "geo_coordinate.h"
 #include <iostream>
+#include <ostream>
 
 using ljankai::EuCountries;
 
@@ -10,13 +11,14 @@ int main() {
   auto countries = EuCountries();
 
   std::cout << "Az opciók közül válaszd ki, hogy honnan szeretnél indulni:\n";
-  std::cout << "- " << std::endl;
+      std::cout  << "- " << std::endl;
+
 
   std::cin >> start_country;
 
   std::cout << "Az opciók közül válaszd ki, hogy hova szeretnél érkezni:\n";
 
-  std::cout << "- " << std::endl;
+  std::cout  << "- " <<   std::endl;
 
   std::cin >> end_country;
 
