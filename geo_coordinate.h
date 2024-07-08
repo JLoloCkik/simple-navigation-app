@@ -22,6 +22,6 @@ private:
   const Angle longitude_;
 };
 
-} // namespace ljankai
+} // namespace ljankaii
 
 #endif

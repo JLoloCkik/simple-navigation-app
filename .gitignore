@@ -1,3 +1,4 @@
 build
 cmake-build-debug
 .country_test.cpp.swp
+.cache

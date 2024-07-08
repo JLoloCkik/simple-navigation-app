@@ -1,7 +1,5 @@
 #include "geo_coordinate.h"
 #include <string>
-#include <vector>
-#include <iostream>
 #include <map>
 
 namespace ljankai {
