@@ -1,25 +1,11 @@
-#ifndef LJANKAI_COUNTRY_H
-#define LJANKAI_COUNTRY_H
-
 #include "geo_coordinate.h"
 #include <string>
 #include <vector>
+#include <iostream>
+#include <map>
 
 namespace ljankai {
-class Country {
-public:
-  Country(GeoCoordinate geo_coordinate) : geo_coordinate_(geo_coordinate) {}
-
-  std::string start_country;
-  std::string target_country;
-  GeoCoordinate geo_coordinate_;
-
-  struct CountryData {
-    std::string name;
-    GeoCoordinate geo_coordinate_;
-  };
-
-  static const std::vector<CountryData> EuCountries() {
+std::map<std::string, GeoCoordinate> EuCountries(){
     return {{"Austria", GeoCoordinate::FromDegrees(48.2082, 16.3738)},
             {"Belgium", GeoCoordinate::FromDegrees(50.8503, 4.3517)},
             {"Bulgaria", GeoCoordinate::FromDegrees(42.6977, 23.3219)},
@@ -47,7 +33,8 @@ public:
             {"Slovenia", GeoCoordinate::FromDegrees(46.0569, 14.5058)},
             {"Spain", GeoCoordinate::FromDegrees(40.4168, -3.7038)},
             {"Sweden", GeoCoordinate::FromDegrees(59.3293, 18.0686)}};
-  }
-};
+    }
+
+
 } // namespace ljankai
-#endif // GOOGLEMAPS_COUNTRY_H
+
