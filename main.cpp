@@ -1,9 +1,11 @@
 #include "eu_countries.cpp"
 #include "geo_coordinate.h"
+
 #include <iostream>
 #include <ostream>
 
 using ljankai::EuCountries;
+using ljankai::GeoCoordinate;
 
 int main() {
   std::string start_country;
@@ -11,21 +13,26 @@ int main() {
   auto countries = EuCountries();
 
   std::cout << "Az opciók közül válaszd ki, hogy honnan szeretnél indulni:\n";
-      std::cout  << "- " << std::endl;
 
+  std::map<std::string, GeoCoordinate> euCountries = ljankai::EuCountries();
+  for (const auto &[country, geo_coordinate] : countries) {
+    std::cout << "- "<< country << std::endl;
+  }
 
   std::cin >> start_country;
 
   std::cout << "Az opciók közül válaszd ki, hogy hova szeretnél érkezni:\n";
 
-  std::cout  << "- " <<   std::endl;
+    for (const auto &[country, geo_coordinate] : countries) {
+        std::cout << "- "<< country << std::endl;
+    }
 
   std::cin >> end_country;
 
   auto start = countries.at(start_country);
   auto end = countries.at(end_country);
-  auto distance = start.BearingTo(end).AsDegrees();
-  auto bearing = start.DistanceTo(end);
+  auto bearing = start.BearingTo(end).AsDegrees();
+  auto distance = start.DistanceTo(end);
 
   std::cout << "Távolság: " << distance << "km" << std::endl;
   std::cout << "Irány: " << bearing << std::endl;
