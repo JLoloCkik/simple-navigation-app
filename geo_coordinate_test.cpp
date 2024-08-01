@@ -38,9 +38,17 @@ TEST(GeoCoordinateTest, DirectionCalculatorFromSouthNorth90) {
 
 // DistanceCalculator
 
-TEST(GeoCoordinateTest, DistanceCalculator) {
+TEST(GeoCoordinateTest, DistanceCalculatorSouthNorth90) {
   GeoCoordinate start = GeoCoordinate::FromDegrees(-90, 0);
   GeoCoordinate end = GeoCoordinate::FromDegrees(90, 0);
 
   EXPECT_NEAR(start.DistanceTo(end), 20037.5, 0.1);
 }
+
+TEST(GeoCoordinateTest, DistanceCalculatorSouthNorth180) {
+  GeoCoordinate start = GeoCoordinate::FromDegrees(-180, 0);
+  GeoCoordinate end = GeoCoordinate::FromDegrees(90, 0);
+
+  EXPECT_NEAR(start.DistanceTo(end), 10010, 0.1);
+}
+

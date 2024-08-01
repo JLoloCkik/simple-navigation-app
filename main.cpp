@@ -36,4 +36,6 @@ int main() {
 
   std::cout << "Távolság: " << distance << "km" << std::endl;
   std::cout << "Irány: " << bearing << std::endl;
+
+
 }
