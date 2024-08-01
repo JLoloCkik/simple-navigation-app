@@ -48,9 +48,6 @@ namespace ljankai
             {"Croatia", "Hungary"},
             {"Croatia", "Slovenia"},
 
-            {"Cyprus", "Greece"},
-
-            {"Czech Republic", "Germany"},
             {"Czech Republic", "Poland"},
             {"Czech Republic", "Slovakia"},
 
@@ -60,73 +57,30 @@ namespace ljankai
 
             {"Finland", "Sweden"},
 
-            {"France", "Belgium"},
             {"France", "Germany"},
             {"France", "Italy"},
             {"France", "Luxembourg"},
             {"France", "Spain"},
 
-            {"Germany", "Austria"},
-            {"Germany", "Belgium"},
-            {"Germany", "Czech Republic"},
-            {"Germany", "Denmark"},
-            {"Germany", "France"},
+            {"Germany", "Poland"},
             {"Germany", "Luxembourg"},
             {"Germany", "Netherlands"},
-            {"Germany", "Poland"},
 
-            {"Greece", "Bulgaria"},
-            {"Greece", "Cyprus"},
-
-            {"Hungary", "Austria"},
-            {"Hungary", "Croatia"},
             {"Hungary", "Romania"},
             {"Hungary", "Slovakia"},
             {"Hungary", "Slovenia"},
 
+            {"Ireland", "United Kingdom"},  // Nem EU tag, de határos
 
-            {"Italy", "Austria"},
-            {"Italy", "France"},
             {"Italy", "Slovenia"},
 
-            {"Latvia", "Estonia"},
             {"Latvia", "Lithuania"},
 
-            {"Lithuania", "Latvia"},
             {"Lithuania", "Poland"},
-            {"Luxembourg", "Belgium"},
-            {"Luxembourg", "France"},
-            {"Luxembourg", "Germany"},
-
-            {"Netherlands", "Belgium"},
-            {"Netherlands", "Germany"},
-
-            {"Poland", "Czech Republic"},
-            {"Poland", "Germany"},
-            {"Poland", "Lithuania"},
-            {"Poland", "Slovakia"},
 
             {"Portugal", "Spain"},
 
-            {"Romania", "Bulgaria"},
-            {"Romania", "Hungary"},
-
-            {"Slovakia", "Austria"},
-            {"Slovakia", "Czech Republic"},
-            {"Slovakia", "Hungary"},
-            {"Slovakia", "Poland"},
-
-            {"Slovenia", "Austria"},
-            {"Slovenia", "Croatia"},
-            {"Slovenia", "Hungary"},
-            {"Slovenia", "Italy"},
-
-            {"Spain", "France"},
-            {"Spain", "Portugal"},
-
-            {"Sweden", "Finland"},
-
-            {"Malta", "Italy"}
+            {"Slovakia", "Poland"}
         };
 
         Roadmap roadmap;
