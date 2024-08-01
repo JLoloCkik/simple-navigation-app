@@ -27,7 +27,7 @@ namespace ljankai
         }
     };
 
-    int main(int argc, char const* argv[])
+    int roadmap(int argc, char const* argv[])
     {
         vector<vector<string>> edges = {
             {"Austria", "Czech Republic"},
