@@ -11,6 +11,9 @@ namespace ljankai
         std::string name;
         GeoCoordinate geo_coordinate;
 
+        Waypoint(const std::string& n, const GeoCoordinate& g) : name(n), geo_coordinate(g) {}
+
+
         bool operator==(const Waypoint &other) const
         {
             return geo_coordinate == other.geo_coordinate && name == other.name;
@@ -21,6 +24,8 @@ namespace ljankai
             return !(*this == other);
         };
     };
+
+
     //     std::map<std::string, GeoCoordinate> EuCountries()
     //     {
     //         return {

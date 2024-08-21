@@ -27,6 +27,7 @@ add_executable(
         angle_test.cpp
         geo_coordinate_test.cpp
         roadmap.cpp
+        graph/vertex_test.cpp
 
 )
 target_link_libraries(

@@ -10,8 +10,8 @@ namespace ljankai
     {
     public:
         Graph();
-        void AddVertex(const Vertex &vertex);
-        void AddEdge(const Vertex &from, const Vertex &to);
+        void AddVertex(const Vertex& vertex);
+        void AddEdge(const Vertex& from, const Vertex& to);
 
     private:
         std::unordered_set<Vertex> vertices_;

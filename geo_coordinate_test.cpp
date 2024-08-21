@@ -59,3 +59,5 @@ TEST(GeoCoordinateTest, DistanceCalculatorBetweenAdjacentLatitudes) {
   EXPECT_NEAR(start.DistanceTo(end), 111.3, 0.1);
 }
 
+//Equals
+
