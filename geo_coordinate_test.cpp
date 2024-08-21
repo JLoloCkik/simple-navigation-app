@@ -45,10 +45,17 @@ TEST(GeoCoordinateTest, DistanceCalculatorSouthNorth90) {
   EXPECT_NEAR(start.DistanceTo(end), 20037.5, 0.1);
 }
 
-TEST(GeoCoordinateTest, DistanceCalculatorSouthNorth180) {
-  GeoCoordinate start = GeoCoordinate::FromDegrees(-180, 0);
-  GeoCoordinate end = GeoCoordinate::FromDegrees(90, 0);
+TEST(GeoCoordinateTest, DistanceCalculatorBetweenTwoPoints) {
+  GeoCoordinate start = GeoCoordinate::FromDegrees(0, 50);
+  GeoCoordinate end = GeoCoordinate::FromDegrees(0, 90);
 
-  EXPECT_NEAR(start.DistanceTo(end), 10010, 0.1);
+  EXPECT_NEAR(start.DistanceTo(end), 4452.8, 0.1);
+}
+
+TEST(GeoCoordinateTest, DistanceCalculatorBetweenAdjacentLatitudes) {
+  GeoCoordinate start = GeoCoordinate::FromDegrees(1, 0);
+  GeoCoordinate end = GeoCoordinate::FromDegrees(2, 0);
+
+  EXPECT_NEAR(start.DistanceTo(end), 111.3, 0.1);
 }
 

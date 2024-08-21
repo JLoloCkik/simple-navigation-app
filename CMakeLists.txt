@@ -5,7 +5,9 @@ project(simple-navigation-app)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(SimpleNavigationAppLib SHARED angle.cpp geo_coordinate.cpp)
+add_library(    
+        SimpleNavigationAppLib SHARED angle.cpp geo_coordinate.cpp graph/edge.cpp graph/vertex.cpp
+)
 add_executable(SimpleNavigationApp main.cpp)
 target_link_libraries(SimpleNavigationApp SimpleNavigationAppLib)
 include(FetchContent)
@@ -24,6 +26,8 @@ add_executable(
         country_test
         angle_test.cpp
         geo_coordinate_test.cpp
+        roadmap.cpp
+
 )
 target_link_libraries(
         country_test

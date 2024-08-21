@@ -70,7 +70,6 @@ namespace ljankai
             {"Hungary", "Slovakia"},
             {"Hungary", "Slovenia"},
 
-            {"Ireland", "United Kingdom"},  // Nem EU tag, de határos
 
             {"Italy", "Slovenia"},
 
@@ -82,6 +81,8 @@ namespace ljankai
 
             {"Slovakia", "Poland"}
         };
+
+
 
         Roadmap roadmap;
 
@@ -96,4 +97,5 @@ namespace ljankai
             cout << endl;
         }
     }
+
 }//namespace end
