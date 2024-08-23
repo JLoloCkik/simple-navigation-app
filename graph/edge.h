@@ -6,19 +6,21 @@
 namespace ljankai
 {
     class Vertex;
+
     class Edge
     {
-    public:
-        Edge(Vertex &from, const Vertex &to);
 
-        const Vertex &From() const
+    public:
+        Edge(Vertex& from, const Vertex& to);
+
+        const Vertex& From() const
         {
             return from_;
         }
 
     private:
-        const Vertex &from_;
-        const Vertex &to_;
+        const Vertex& from_;
+        const Vertex& to_;
         const double weight_;
     };
 }
