@@ -29,6 +29,17 @@ namespace ljankai
       return !(*this == other);
     };
 
+    struct HashFunction
+    {
+      size_t operator()(const GeoCoordinate &geo_coordinate) const
+      {
+        size_t result = 17;
+        result = 7 * (result + Angle::HashFunction()(geo_coordinate.latitude_));
+        result = 7 * (result + Angle::HashFunction()(geo_coordinate.longitude_));
+        return result;
+      }
+    };
+
   private:
     const Angle latitude_;
     const Angle longitude_;

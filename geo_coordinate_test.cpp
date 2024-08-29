@@ -59,5 +59,18 @@ TEST(GeoCoordinateTest, DistanceCalculatorBetweenAdjacentLatitudes) {
   EXPECT_NEAR(start.DistanceTo(end), 111.3, 0.1);
 }
 
-//Equals
+
+
+TEST(AngleTest, TestHash)
+{
+  auto cord1 = GeoCoordinate::FromDegrees(2, 0);
+  auto cord2 = GeoCoordinate::FromDegrees(2, 0);
+  auto cord3 = GeoCoordinate::FromDegrees(3, 0);
+
+
+
+  EXPECT_EQ(GeoCoordinate::HashFunction()(cord1), GeoCoordinate::HashFunction()(cord2));
+  EXPECT_NE(GeoCoordinate::HashFunction()(cord1), GeoCoordinate::HashFunction()(cord3));
+
+}
 

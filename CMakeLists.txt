@@ -6,7 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(    
-        SimpleNavigationAppLib SHARED angle.cpp geo_coordinate.cpp graph/edge.cpp graph/vertex.cpp
+        SimpleNavigationAppLib SHARED   
+        angle.cpp geo_coordinate.cpp graph/edge.cpp graph/vertex.cpp graph/graph.cpp
 )
 add_executable(SimpleNavigationApp main.cpp)
 target_link_libraries(SimpleNavigationApp SimpleNavigationAppLib)
@@ -23,18 +24,21 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(
-        country_test
+        navigation_test
         angle_test.cpp
         geo_coordinate_test.cpp
         roadmap.cpp
         graph/vertex_test.cpp
+        graph/graph_test.cpp
+
 
 )
 target_link_libraries(
-        country_test
+        navigation_test
         GTest::gtest_main
+        GTest::gmock
         SimpleNavigationAppLib
 )
 
 include(GoogleTest)
-gtest_discover_tests(country_test)
+gtest_discover_tests(navigation_test)

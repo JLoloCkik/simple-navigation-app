@@ -11,8 +11,8 @@ namespace ljankai
         std::string name;
         GeoCoordinate geo_coordinate;
 
-        Waypoint(const std::string& n, const GeoCoordinate& g) : name(n), geo_coordinate(g) {}
-
+        Waypoint(const std::string &name, const GeoCoordinate &geocordinate)
+            : name(name), geo_coordinate(geocordinate) {}
 
         bool operator==(const Waypoint &other) const
         {
@@ -23,8 +23,18 @@ namespace ljankai
         {
             return !(*this == other);
         };
-    };
 
+        struct HashFunction
+        {
+            size_t operator()(const Waypoint &waypoint) const
+            {
+                size_t result = 17;
+                result = 7 * (result + GeoCoordinate::HashFunction()(waypoint.geo_coordinate));
+                result = 7 * (result + std::hash<std::string>()(waypoint.name));
+                return result;
+            }
+        };
+    };
 
     //     std::map<std::string, GeoCoordinate> EuCountries()
     //     {

@@ -1,27 +1,40 @@
 #ifndef LJANKAI_ANGLE_H
 #define LJANKAI_ANGLE_H
 
-namespace ljankai {
+#include <cstddef>
+#include <functional>  
 
-class Angle {
-public:
-  static Angle FromDegrees(double value);
-  static Angle FromRadian(double value);
+namespace ljankai
+{
 
-  ~Angle() = default;
+  class Angle
+  {
+  public:
+    static Angle FromDegrees(double value);
+    static Angle FromRadian(double value);
 
-  double AsDegrees() const;
-  double AsRadian() const;
-  Angle Normalize() const;
+    ~Angle() = default;
 
-  bool operator==(const Angle &angle) const;
-  bool operator!=(const Angle &angle) const;
+    double AsDegrees() const;
+    double AsRadian() const;
+    Angle Normalize() const;
 
-private:
-  explicit Angle(double value);
+    bool operator==(const Angle &angle) const;
+    bool operator!=(const Angle &angle) const;
 
-  const double value_;
-};
+    struct HashFunction
+    {
+      size_t operator()(const Angle &angle) const
+      {
+        return 7 * (17 + std::hash<double>()(angle.value_));
+      }
+    };
+
+  private:
+    explicit Angle(double value);
+
+    const double value_;
+  };
 
 } // namespace ljankai
 

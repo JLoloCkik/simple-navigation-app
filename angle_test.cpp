@@ -4,29 +4,53 @@
 
 using ljankai::Angle;
 
-TEST(AngleTest, DegreesEqualsRadian) {
+TEST(AngleTest, DegreesEqualsRadian)
+{
   EXPECT_EQ(Angle::FromDegrees(0), Angle::FromRadian(0));
 }
-TEST(AngleTest, ReturnsValueInDegrees) {
+
+TEST(AngleTest, ReturnsValueInDegrees)
+{
   auto angle = Angle::FromRadian(M_PI);
   EXPECT_EQ(angle.AsDegrees(), 180);
 }
-TEST(AngleTest, ReturnsValueInRadian) {
+
+TEST(AngleTest, ReturnsValueInRadian)
+{
   auto angle = Angle::FromDegrees(180);
   EXPECT_EQ(angle.AsRadian(), M_PI);
 }
-TEST(AngleTest, NormalizeValueBetweenZeroAndPi) {
+
+TEST(AngleTest, NormalizeValueBetweenZeroAndPi)
+{
   auto angle = Angle::FromDegrees(720);
   EXPECT_EQ(angle.Normalize(), Angle::FromDegrees(0));
 }
-TEST(AngleTest, NormalizeValueBetweenZeroAndPiWithinError) {
+
+TEST(AngleTest, NormalizeValueBetweenZeroAndPiWithinError)
+{
   auto angle = Angle::FromDegrees(400);
   EXPECT_NEAR(angle.Normalize().AsRadian(), Angle::FromDegrees(40).AsRadian(),
               0.000001);
 }
-TEST(AngleTest, AnglesAreEquale) {
+
+TEST(AngleTest, AnglesAreEquale)
+{
   EXPECT_EQ(Angle::FromDegrees(0), Angle::FromDegrees(0));
 }
-TEST(AngleTest, AnglesAreNotEquale) {
+
+TEST(AngleTest, AnglesAreNotEquale)
+{
   EXPECT_NE(Angle::FromDegrees(1), Angle::FromDegrees(0));
+}
+
+TEST(AngleTest, TestHash)
+{
+  auto angle1 = Angle::FromDegrees(2);
+  auto angle2 = Angle::FromDegrees(2);
+  auto angle3 = Angle::FromDegrees(3);
+
+  EXPECT_EQ(Angle::HashFunction()(angle1), Angle::HashFunction()(angle2));
+  EXPECT_NE(Angle::HashFunction()(angle1), Angle::HashFunction()(angle3));
+
 }
