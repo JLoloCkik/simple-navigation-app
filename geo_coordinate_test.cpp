@@ -61,7 +61,7 @@ TEST(GeoCoordinateTest, DistanceCalculatorBetweenAdjacentLatitudes) {
 
 
 
-TEST(AngleTest, TestHash)
+TEST(GeoCoordinateTest, TestHash)
 {
   auto cord1 = GeoCoordinate::FromDegrees(2, 0);
   auto cord2 = GeoCoordinate::FromDegrees(2, 0);
