@@ -9,12 +9,16 @@ namespace ljankai
     class Graph
     {
     public:
-        Graph();
-        void AddVertex(const Vertex& vertex);
-        void AddEdge(const Vertex& from, const Vertex& to);
+        void AddVertex(const Vertex &vertex);
+        void AddEdge(Vertex &from, const Vertex &to);
+
+        const std::unordered_set<Vertex, Vertex::HashFunction> &Vertices() const
+        {
+            return vertices_;
+        }
 
     private:
-        std::unordered_set<Vertex> vertices_;
+        std::unordered_set<Vertex, Vertex::HashFunction> vertices_;
     };
 }
 #endif

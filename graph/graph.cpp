@@ -1,27 +1,34 @@
 #include "graph.h"
+
 #include <stdexcept>
+#include "edge.h"
+#include "vertex.h"
+
 
 namespace ljankai
 {
-    Vertex::Vertex(const Waypoint& value) : value_(value)
-    {
-    }
+	void Graph::AddVertex(const Vertex &vertex)
+	{
+		if (vertices_.find(vertex) != vertices_.end())
+		{
+			throw std::invalid_argument("Vertex already exists!");
+		}
+		Graph::vertices_.insert(vertex);
+	};
 
-    void Vertex::AddEdge(const Edge& edge)
-    {
-        if (edge.From() != *this)
+	void Graph::AddEdge(Vertex &from, const Vertex &to)
+	{        struct HashFunction
         {
-            throw std::invalid_argument("Illegal edge!");
-        }
+            size_t operator()(const Vertex &vertex) const
+            {
+                return 7 * (17 + Waypoint::HashFunction()(vertex.value_));
+            }
+        };
+		if (vertices_.find(from) == vertices_.end() || vertices_.find(to) == vertices_.end())
+		{
+			throw std::invalid_argument("One or both vertices not found!");
+		}
 
-        edges_.push_back(edge);
-    };
-
-    Edge::Edge(Vertex& from, const Vertex& to) : from_(from),
-                                                 to_(to),
-                                                 weight_(from.Value().geo_coordinate.DistanceTo(
-                                                     to.Value().geo_coordinate))
-    {
-        from.AddEdge(*this);
-    }
+		Edge( from, to);
+	};
 }

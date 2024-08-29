@@ -5,7 +5,6 @@
 #include "edge.h"
 #include "../waypoint.h"
 
-
 namespace ljankai
 {
     class Edge;
@@ -29,6 +28,14 @@ namespace ljankai
         bool operator!=(const Vertex &other) const
         {
             return !(*this == other);
+        };
+
+        struct HashFunction
+        {
+            size_t operator()(const Vertex &vertex) const
+            {
+                return 7 * (17 + Waypoint::HashFunction()(vertex.value_));
+            }
         };
 
     private:
