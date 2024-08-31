@@ -27,7 +27,7 @@ add_executable(
         navigation_test
         angle_test.cpp
         geo_coordinate_test.cpp
-        roadmap.cpp
+        waypoint_test.cpp
         graph/vertex_test.cpp
         graph/graph_test.cpp
 

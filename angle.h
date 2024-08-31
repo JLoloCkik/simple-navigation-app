@@ -2,7 +2,7 @@
 #define LJANKAI_ANGLE_H
 
 #include <cstddef>
-#include <functional>  
+#include <functional>
 
 namespace ljankai
 {
@@ -19,8 +19,14 @@ namespace ljankai
     double AsRadian() const;
     Angle Normalize() const;
 
-    bool operator==(const Angle &angle) const;
-    bool operator!=(const Angle &angle) const;
+    bool operator==(const Angle &angle) const
+    {
+      return value_ == angle.value_;
+    }
+    bool operator!=(const Angle &angle) const
+    {
+      return value_ != angle.value_;
+    }
 
     struct HashFunction
     {

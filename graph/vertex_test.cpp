@@ -4,7 +4,7 @@
 #include "../waypoint.h"
 #include <gtest/gtest.h>
 
-//Addedge
+// Addedge
 
 namespace ljankai
 {
@@ -20,7 +20,6 @@ namespace ljankai
         EXPECT_NO_THROW(vertex1.AddEdge(edge));
     }
 
-
     TEST(VertexTest, CannotCreateEdgeBetweenThreeVertices)
     {
         Waypoint wp1("Cyprus", GeoCoordinate::FromDegrees(35.1856, 33.3823));
@@ -35,7 +34,7 @@ namespace ljankai
         EXPECT_THROW(vertex3.AddEdge(edge), std::invalid_argument);
     }
 
-    //EqualsTest
+    // EqualsTest
 
     TEST(VertexTest, EqualityOperatorWorks)
     {
@@ -43,11 +42,9 @@ namespace ljankai
         Waypoint wp2("Finland", GeoCoordinate::FromDegrees(60.1699, 24.9384));
         Waypoint wp3("Estonia", GeoCoordinate::FromDegrees(59.4370, 24.7536));
 
-
         Vertex vertex1(wp1);
         Vertex vertex2(wp2);
         Vertex vertex3(wp3);
-
 
         EXPECT_TRUE(vertex1 == vertex3);
         EXPECT_TRUE(vertex3 == vertex1);
@@ -60,6 +57,19 @@ namespace ljankai
 
         EXPECT_FALSE(vertex1 != vertex3);
         EXPECT_FALSE(vertex3 != vertex1);
+    }
 
+    TEST(VertexTest, TestHash)
+    {
+        Waypoint wp1("Estonia", GeoCoordinate::FromDegrees(59.4370, 24.7536));
+        Waypoint wp2("Estonia", GeoCoordinate::FromDegrees(59.4370, 24.7536));
+        Waypoint wp3("Finland", GeoCoordinate::FromDegrees(60.1699, 24.9384));
+
+        Vertex vertex1(wp1);
+        Vertex vertex2(wp2);
+        Vertex vertex3(wp3);
+
+        EXPECT_EQ(Vertex::HashFunction()(vertex1), Vertex::HashFunction()(vertex2));
+        EXPECT_NE(Vertex::HashFunction()(vertex1), Vertex::HashFunction()(vertex3));
     }
 }
