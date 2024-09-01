@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.14)
 project(simple-navigation-app)
 
 # GoogleTest requires at least C++14
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(    
         SimpleNavigationAppLib SHARED   
-        angle.cpp geo_coordinate.cpp graph/edge.cpp graph/vertex.cpp graph/graph.cpp
+        angle.cpp geo_coordinate.cpp graph/edge.cpp graph/vertex.cpp graph/graph.cpp waypoint.h
 )
 add_executable(SimpleNavigationApp main.cpp)
 target_link_libraries(SimpleNavigationApp SimpleNavigationAppLib)

@@ -1,40 +1,70 @@
-// #include "geo_coordinate.h"
-// #include <iostream>
-// #include <ostream>
+#include "geo_coordinate.h"
+#include "graph/edge.h"
+#include "graph/graph.h"
+#include "graph/vertex.h"
+#include "waypoint.h"
+#include <iostream>
 
-// using ljankai::EuCountries;
-// using ljankai::GeoCoordinate;
+using ljankai::GeoCoordinate;
+using ljankai::Graph;
+using ljankai::Vertex;
+using ljankai::Waypoint;
 
-int main() {
-  // std::string start_country;
-  // std::string end_country;
-  // auto countries = EuCountries();
+int main()
+{
+  Waypoint wp1("1", GeoCoordinate::FromDegrees(0, 0));
+  Waypoint wp2("2", GeoCoordinate::FromDegrees(0.010833, 0.061944));
+  Waypoint wp3("3", GeoCoordinate::FromDegrees(0.040556, 0.07));
+  Waypoint wp4("4", GeoCoordinate::FromDegrees(0.045833, 0.168889));
+  Waypoint wp5("5", GeoCoordinate::FromDegrees(0.083889, 0.130833));
+  Waypoint wp6("6", GeoCoordinate::FromDegrees(0.125, 0.015278));
 
-  // std::cout << "Az opciók közül válaszd ki, hogy honnan szeretnél indulni:\n";
+  Vertex v1(wp1);
+  Vertex v2(wp2);
+  Vertex v3(wp3);
+  Vertex v4(wp4);
+  Vertex v5(wp5);
+  Vertex v6(wp6);
 
-  // std::map<std::string, GeoCoordinate> euCountries = ljankai::EuCountries();
-  // for (const auto &[country, geo_coordinate] : countries) {
-  //   std::cout << "- "<< country << std::endl;
-  // }
+  Graph g;
+  g.AddVertex(v1);
+  g.AddVertex(v2);
+  g.AddVertex(v3);
+  g.AddVertex(v4);
+  g.AddVertex(v5);
+  g.AddVertex(v6);
 
-  // std::cin >> start_country;
+  g.AddEdge(v1, v2);
+  g.AddEdge(v1, v3);
+  g.AddEdge(v1, v6);
 
-  // std::cout << "Az opciók közül válaszd ki, hogy hova szeretnél érkezni:\n";
+  g.AddEdge(v2, v1);
+  g.AddEdge(v2, v3);
+  g.AddEdge(v2, v4);
 
-  //   for (const auto &[country, geo_coordinate] : countries) {
-  //       std::cout << "- "<< country << std::endl;
-  //   }
+  g.AddEdge(v3, v1);
+  g.AddEdge(v3, v2);
+  g.AddEdge(v3, v4);
+  g.AddEdge(v3, v6);
 
-  // std::cin >> end_country;
+  g.AddEdge(v4, v2);
+  g.AddEdge(v4, v3);
+  g.AddEdge(v4, v5);
 
+  g.AddEdge(v5, v4);
+  g.AddEdge(v5, v6);
 
-  // auto start = countries.at(start_country);
-  // auto end = countries.at(end_country);
-  // auto bearing = start.BearingTo(end).AsDegrees();
-  // auto distance = start.DistanceTo(end);
+  g.AddEdge(v6, v1);
+  g.AddEdge(v6, v3);
+  g.AddEdge(v6, v5);
 
-  // std::cout << "Távolság: " << distance << "km" << std::endl;
-  // std::cout << "Irány: " << bearing << std::endl;
+  auto shortest_path = g.ShortestPath(v1, v6);
 
-
+  for (const Vertex *v : shortest_path)
+  {
+    std::cout << v->Value().name << "(" << v->Value().geo_coordinate.Latitude().AsDegrees() << ", "
+              << v->Value().geo_coordinate.Longitude().AsDegrees() << ")";
+  }
+  std::cout << shortest_path.size();
+  return 0;
 }
