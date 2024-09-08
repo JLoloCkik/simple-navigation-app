@@ -12,7 +12,6 @@
 
 #include <iostream>
 
-
 namespace ljankai
 {
 	namespace
@@ -101,12 +100,36 @@ namespace ljankai
 				}
 			}
 		}
+
 		std::list<const Vertex *> result;
-		for (auto it = prev.find(&to); it->second == &from; it = prev.find(it->second))
+
+		
+		auto it = prev.find(&to);
+		if (it == prev.end())
+		{
+			std::cout << "falid";
+			return {};
+		}
+		while (it != prev.end() && it->second != nullptr)
 		{
 			result.push_front(it->first);
+			it = prev.find(it->second);
+		}
+		result.push_front(&from);
+
+		if (result.front() != &from)
+		{
+			return {};
 		}
 
 		return result;
+
+
+		// 	for (auto it = prev.find(&to); it->second != &from; it = prev.find(it->second))  ha az it->second nem található akkor end() itherátort ad vissza
+		// {
+		// 	result.push_front(it->first);
+		// }
+		// result.push_front(&from);
+		// return result;
 	}
 }

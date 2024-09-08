@@ -58,13 +58,15 @@ int main()
   g.AddEdge(v6, v3);
   g.AddEdge(v6, v5);
 
-  auto shortest_path = g.ShortestPath(v1, v6);
+  auto shortest_path = g.ShortestPath(v1, v5);
 
+  std::cout << "A legrövidebb út v1 és v5 között:" << std::endl;
   for (const Vertex *v : shortest_path)
   {
-    std::cout << v->Value().name << "(" << v->Value().geo_coordinate.Latitude().AsDegrees() << ", "
-              << v->Value().geo_coordinate.Longitude().AsDegrees() << ")";
+    std::cout << v->Value().GetName() << " -> " << std::endl;
   }
-  std::cout << shortest_path.size();
+  std::cout << std::endl;
+
   return 0;
+
 }

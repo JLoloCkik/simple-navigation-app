@@ -24,6 +24,11 @@ namespace ljankai
             return !(*this == other);
         };
 
+        std::string GetName() const
+        {
+            return name;
+        };
+
         struct HashFunction
         {
             size_t operator()(const Waypoint &waypoint) const
