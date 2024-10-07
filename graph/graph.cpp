@@ -35,7 +35,11 @@ namespace ljankai
 			throw std::invalid_argument("One or both vertices not found!");
 		}
 
-		Edge(from, to);
+		// Edge(from, to);
+
+		Edge edge(from, to); // Create the Edge object
+		from.AddEdge(edge); // Add the edge to the 'from' vertex
+		std::cout << "Added edge from " << from.Value().GetName() << " to " << to.Value().GetName() << std::endl;
 	};
 
 	const std::list<const Vertex *> Graph::ShortestPath(const Vertex &from, const Vertex &to) const
@@ -121,6 +125,22 @@ namespace ljankai
 		{
 			return {};
 		}
+
+		if (!result.empty()) {
+			std::cout << "Shortest path from " << from.Value().GetName() << " to " << to.Value().GetName() << ": ";
+			for (const auto &vertex : result) {
+				std::cout << vertex->Value().GetName() << " ";
+			}
+			std::cout << std::endl;
+		} else {
+			std::cout << "No path found." << std::endl;
+		}
+
+		for (const auto &pair : prev) {
+			std::cout << "Vertex: " << pair.first->Value().GetName() 
+					<< ", Previous: " << (pair.second ? pair.second->Value().GetName() : "nullptr") << std::endl;
+		}
+
 
 		return result;
 
